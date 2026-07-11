@@ -13,7 +13,7 @@ Tasks and specs for this project live as markdown files in `.scratchpad/`.
 
 ## When a skill says "publish to the task tracker"
 
-Create a new file under `.scratchpad/<feature-slug>/`, creating the directory if needed.
+Create a new file under `.scratchpad/<feature-slug>/`, deriving the slug from the feature title (kebab-case) and creating the directory if needed.
 
 ## When a skill says "fetch the relevant task"
 
