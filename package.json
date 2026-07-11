@@ -1,0 +1,7 @@
+{
+  "name": "skills",
+  "version": "1.0.0",
+  "description": "A set of agent skills used for engineering.",
+  "license": "MIT",
+  "packageManager": "pnpm@10.33.2"
+}
