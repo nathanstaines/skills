@@ -9,8 +9,9 @@ A set of agent skills used for engineering.
 - **[grilling](./skills/grilling/SKILL.md)**: the interview itself, one question at a time until no open decisions remain.
 - **[to-spec](./skills/to-spec/SKILL.md)**: turn the current conversation into a spec and publish it to the project's task tracker.
 - **[to-tasks](./skills/to-tasks/SKILL.md)**: break a plan, spec or conversation into tracer-bullet tasks with blocking edges, published to the task tracker.
+- **[domain-modelling](./skills/domain-modelling/SKILL.md)**: build and sharpen the project's domain model as you design, maintaining `CONTEXT.md` and offering ADRs sparingly.
 
-A typical flow: `/grill` a plan, `/to-spec` the conversation, `/to-tasks` the spec, then work the frontier.
+A typical flow: `/grill` a plan, `/to-spec` the conversation, `/to-tasks` the spec, then work the frontier, with `/domain-modelling` keeping the glossary and ADRs sharp throughout.
 
 ## Installation
 
