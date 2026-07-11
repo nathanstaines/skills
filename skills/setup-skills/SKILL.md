@@ -1,6 +1,6 @@
 ---
 name: setup-skills
-description: Configure this project for engineering skills. Sets up the task tracker and domain doc layout. Run once per project before first use of the other skills.
+description: Configure this project for engineering skills. Sets up the task tracker, domain doc layout and testing stance. Run once per project before first use of the other skills.
 disable-model-invocation: true
 ---
 
@@ -10,6 +10,7 @@ Scaffold the per-project configuration the engineering skills assume:
 
 - **Task tracker**: where tasks live (GitHub or local markdown)
 - **Domain docs**: where `CONTEXT.md` and ADRs live and the rules for reading them
+- **Testing stance**: whether skills should write tests here (asked only when the project has none)
 
 This is a prompt-driven skill, not a deterministic script. Explore, present what you find, confirm with the user, then write.
 
@@ -26,6 +27,7 @@ Look at the current project to understand its starting state. Read whatever exis
 - `docs/agents/`: does this skill's prior output already exist?
 - `.scratchpad/`: sign that a local markdown task tracker is already in use
 - Multi-context signals: multiple deployable apps/services in one tree, whatever the ecosystem (e.g. a `pnpm-workspace.yaml` or `workspaces` field, a `.sln` referencing many projects, a populated `packages/*` or `apps/*` with its own `src/`). Their absence means single-context, which is almost every project.
+- Test signals: test directories or files (`tests/`, `__tests__/`, `*.test.*`, `*.spec.*`), a runner config or a test script in the ecosystem's manifest. Their absence triggers Section C.
 
 ### 2. Present findings and ask
 
@@ -39,6 +41,8 @@ Summarise what's present and what's missing. Then complete the sections in order
 **Section B: domain docs.** Default to single-context, one `CONTEXT.md` plus `docs/adr/` at the project root. This fits almost every project; write it without asking.
 
 Offer multi-context, a root `CONTEXT-MAP.md` pointing to per-context `CONTEXT.md` files, only when exploration found multi-context signals. Then confirm which layout they want.
+
+**Section C: testing stance.** Skip this section when exploration found test signals; an existing suite speaks for itself. When it found none, ask whether skills should write tests in this project. Absence is ambiguous (deliberately test-free vs not yet started), so the recorded answer is what disambiguates it for every future skill. The answer becomes a `### Testing` line in the `## Agent skills` block; no separate docs file.
 
 ### 3. Confirm and edit
 
@@ -71,7 +75,13 @@ The block:
 ### Domain docs
 
 [one-line summary of layout, "single-context" or "multi-context"]. See `docs/agents/domain.md`.
+
+### Testing
+
+[one-line stance, e.g. "verified manually, keep it test-free" or "tests are welcome but none exist yet"]
 ```
+
+Include the `### Testing` sub-block only when Section C ran; a project with an existing suite needs no stance recorded.
 
 Then write the docs files using the seed templates in this skill folder as a starting point:
 
