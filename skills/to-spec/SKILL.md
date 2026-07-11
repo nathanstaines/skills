@@ -14,9 +14,9 @@ The task tracker conventions live in `docs/agents/task-tracker.md`. Run `/setup-
 
 2. Sketch out the seams at which you're going to test the feature. Existing seams should be preferred to new ones. Use the highest seam possible. If new seams are needed, propose them at the highest point you can. The fewer seams across the codebase, the better; the ideal number is one.
 
-   Check with the user that these seams match their expectations. Aside from the testing fallback below, this is the only question this skill asks.
+   Check with the user that these seams match their expectations. This is the only question this skill asks.
 
-   Whether the project uses tests comes from the `### Testing` stance in the Agent skills block. That block only exists when the stance needed recording, so its absence is read against the codebase: an existing test suite means tests as normal; no stance and no test suite means ask the user, and suggest recording the answer by re-running `/setup-skills`. When the project doesn't use tests, skip this step; the spec's Verification section covers checking the change instead.
+   Whether the project uses tests comes from the `### Testing` stance in the Agent skills block (if the stance is missing, re-run `/setup-skills`). When the project doesn't use tests, skip this step; the spec's Verification section covers checking the change instead.
 
 3. Give the spec a short feature title, write it using the template below, then publish it to the task tracker. The tracker conventions derive the task title or feature slug from the title.
 
@@ -37,7 +37,9 @@ A LONG, numbered list of user stories. Each user story should be in the format o
 1. As an <actor>, I want a <feature>, so that <benefit>
 
 <user-story-example>
+
 1. As a mobile bank customer, I want to see balance on my accounts, so that I can make better informed decisions about my spending
+
 </user-story-example>
 
 This list of user stories should be extremely extensive and cover all aspects of the feature.

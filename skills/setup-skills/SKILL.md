@@ -10,7 +10,7 @@ Scaffold the per-project configuration the engineering skills assume:
 
 - **Task tracker**: where tasks live (GitHub or local markdown)
 - **Domain docs**: where `CONTEXT.md` and ADRs live and the rules for reading them
-- **Testing stance**: whether skills should write tests here (asked only when the project has none)
+- **Testing stance**: where tests live, or whether skills should write them at all (asked only when the project has none)
 
 This is a prompt-driven skill, not a deterministic script. Explore, present what you find, confirm with the user, then write.
 
@@ -40,9 +40,9 @@ Summarise what's present and what's missing. Then complete the sections in order
 
 **Section B: domain docs.** Default to single-context, one `CONTEXT.md` plus `docs/adr/` at the project root. This fits almost every project; write it without asking.
 
-Offer multi-context, a root `CONTEXT-MAP.md` pointing to per-context `CONTEXT.md` files, only when exploration found multi-context signals. Then confirm which layout they want.
+Offer multi-context, a root `CONTEXT-MAP.md` pointing to per-context `CONTEXT.md` files, only when exploration finds multi-context signals. Then confirm which layout they want.
 
-**Section C: testing stance.** Skip this section when exploration found test signals; an existing suite speaks for itself. When it found none, ask whether skills should write tests in this project. Absence is ambiguous (deliberately test-free vs not yet started), so the recorded answer is what disambiguates it for every future skill. The answer becomes a `### Testing` line in the `## Agent skills` block; no separate docs file.
+**Section C: testing stance.** Always recorded as a `### Testing` line in the `## Agent skills` block; no separate docs file. When exploration finds test signals, write the line from what you found (where tests live, which runner) without asking. When it finds none, ask whether skills should write tests in this project; absence is ambiguous (deliberately test-free vs not yet started) and the recorded answer disambiguates it for every future skill.
 
 ### 3. Confirm and edit
 
@@ -78,10 +78,8 @@ The block:
 
 ### Testing
 
-[one-line stance, e.g. "verified manually, keep it test-free" or "tests are welcome but none exist yet"]
+[one-line stance, e.g. "tests live in `tests/` via vitest", "verified manually, keep it test-free" or "tests are welcome but none exist yet"]
 ```
-
-Include the `### Testing` sub-block only when Section C ran; a project with an existing suite needs no stance recorded.
 
 Then write the docs files using the seed templates in this skill folder as a starting point:
 

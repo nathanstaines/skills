@@ -13,9 +13,13 @@ Tasks and specs for this project live as GitHub issues. Use the `gh` CLI for all
 
 Infer the repo from `git remote -v`. `gh` does this automatically when run inside a clone.
 
+## Blocking edges
+
+GitHub's native issue dependencies are the canonical representation. Add an edge with `gh api --method POST repos/<owner>/<repo>/issues/<blocked>/dependencies/blocked_by -F issue_id=<blocker-db-id>`, where `<blocker-db-id>` is the blocker's numeric database id (`gh api repos/<owner>/<repo>/issues/<n> --jq .id`, not the `#number` or `node_id`). Where dependencies aren't available, fall back to a `Blocked by: #<n>, #<n>` line at the top of the task body. A task is unblocked when every blocker is closed.
+
 ## When a skill says "publish to the task tracker"
 
-Create a GitHub issue.
+Create a GitHub issue. Specs are issues too, titled `Spec: <feature title>` so they're distinguishable from tasks in the shared number space.
 
 ## When a skill says "fetch the relevant task"
 
