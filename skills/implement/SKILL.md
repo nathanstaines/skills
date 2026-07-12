@@ -14,6 +14,6 @@ Whether the project uses tests comes from the `### Testing` stance in the Agent 
 
 When the project has a typechecker, run it regularly.
 
-Once done, review the full set of changes before handing the work back. Close the task per the tracker conventions, only when every acceptance criterion is met and with any deviation from the task description noted. Implement only the referenced task: when it's done, stop rather than pulling the next frontier task into the same session.
+Once done, review the full set of changes with `/code-review` before handing the work back. Close the task per the tracker conventions, only when every acceptance criterion is met and with any deviation from the task description noted. Implement only the referenced task: when it's done, stop rather than pulling the next frontier task into the same session.
 
 Only record the work in version control (commit, check in, push) when explicitly asked. Applying requested changes never implies recording them, even if that was discussed beforehand.

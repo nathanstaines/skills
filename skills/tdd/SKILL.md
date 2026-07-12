@@ -38,4 +38,4 @@ Ask: "What's the public interface, and which seams should we test?"
 - **Green means the whole suite.** A slice is done when every test passes, not just the new one.
 - **One slice at a time.** One seam, one test, one minimal implementation per cycle.
 - **A bug fix starts at red too.** Reproduce the bug as a failing test at an agreed seam, then fix until it goes green; the test stays as a regression guard.
-- **Refactoring is not part of the loop.** It belongs to a separate review pass once the loop ends, not the red → green implementation cycle.
+- **Refactoring is not part of the loop.** It belongs to a separate review pass (`/code-review`) once the loop ends, not the red → green implementation cycle.
