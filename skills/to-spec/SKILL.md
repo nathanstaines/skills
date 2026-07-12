@@ -68,6 +68,7 @@ Exception: if a prototype produced a snippet that encodes a decision more precis
 
 A list of testing decisions that were made. Include:
 
+- The seams agreed in step 2; `/tdd` treats seams recorded here as confirmed and doesn't re-ask
 - A description of what makes a good test (only test external behaviour, not implementation details)
 - Which modules will be tested
 - Prior art for the tests (i.e. similar types of tests in the codebase)
