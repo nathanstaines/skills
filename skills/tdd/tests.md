@@ -5,7 +5,7 @@
 **Integration-style**: Test through real interfaces, not mocks of internal parts.
 
 ```typescript
-// GOOD: Tests observable behavior
+// GOOD: Tests observable behaviour
 test("user can checkout with valid cart", async () => {
   const cart = createCart();
   cart.add(product);
