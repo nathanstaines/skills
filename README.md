@@ -2,20 +2,6 @@
 
 A set of agent skills used for engineering.
 
-## Skills
-
-- **[setup-skills](./skills/setup-skills/SKILL.md)**: configure a project for the engineering skills (task tracker, domain doc layout and testing stance). Run once per project before first use of the others.
-- **[grill](./skills/grill/SKILL.md)**: a relentless interview to sharpen a plan or design. Runs a `/grilling` session.
-- **[grilling](./skills/grilling/SKILL.md)**: the interview itself, one question at a time until no open decisions remain.
-- **[grill-with-docs](./skills/grill-with-docs/SKILL.md)**: the same interview, capturing glossary terms and ADRs as they resolve.
-- **[to-spec](./skills/to-spec/SKILL.md)**: turn the current conversation into a spec and publish it to the project's task tracker.
-- **[to-tasks](./skills/to-tasks/SKILL.md)**: break a plan, spec or conversation into tracer-bullet tasks with blocking edges, published to the task tracker.
-- **[domain-modelling](./skills/domain-modelling/SKILL.md)**: build and sharpen the project's domain model as you design, maintaining `CONTEXT.md` and offering ADRs sparingly.
-- **[tdd](./skills/tdd/SKILL.md)**: the red → green loop with tests at pre-agreed seams, one vertical slice at a time.
-- **[implement](./skills/implement/SKILL.md)**: work a task or spec end to end, test-first where the project's testing stance allows.
-
-A typical flow: `/grill` a plan, `/to-spec` the conversation, `/to-tasks` the spec, then `/implement` the frontier one task at a time, with `/domain-modelling` keeping the glossary and ADRs sharp throughout.
-
 ## Installation
 
 1. Run the skills.sh installer:
@@ -25,6 +11,27 @@ npx skills@latest add nathanstaines/skills
 ```
 
 2. Pick the skills you want.
+
+## Skills
+
+- **[setup-skills](./skills/setup-skills/SKILL.md)**: configure a project for the engineering skills (task tracker, domain doc layout and testing stance). Run once per project before first use of the others.
+- **[code-review](./skills/code-review/SKILL.md)**: review the changes since a fixed point along two axes, standards (does the code follow the project's conventions?) and spec (does it do what was asked?), reported side by side.
+- **[domain-modelling](./skills/domain-modelling/SKILL.md)**: build and sharpen the project's domain model as you design, maintaining `CONTEXT.md` and offering ADRs sparingly.
+- **[grill](./skills/grill/SKILL.md)**: a relentless interview to sharpen a plan or design. Runs a `/grilling` session.
+- **[grill-with-docs](./skills/grill-with-docs/SKILL.md)**: the same interview, capturing glossary terms and ADRs as they resolve.
+- **[grilling](./skills/grilling/SKILL.md)**: the interview itself, one question at a time until no open decisions remain.
+- **[implement](./skills/implement/SKILL.md)**: work a task or spec end to end, test-first where the project's testing stance allows.
+- **[tdd](./skills/tdd/SKILL.md)**: the red → green loop with tests at pre-agreed seams, one vertical slice at a time.
+- **[to-spec](./skills/to-spec/SKILL.md)**: turn the current conversation into a spec and publish it to the project's task tracker.
+- **[to-tasks](./skills/to-tasks/SKILL.md)**: break a plan, spec or conversation into tracer-bullet tasks with blocking edges, published to the task tracker.
+
+## A typical flow
+
+- `/grill` or `/grill-with-docs` a plan.
+- `/to-spec` the conversation.
+- `/to-tasks` the spec.
+- `/implement` the frontier one task at a time.
+- `/code-review` the changes.
 
 ## Credits
 
