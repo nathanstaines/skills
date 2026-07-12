@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 Implement the work described by the user in the spec or tasks.
 
-The task tracker conventions live in `docs/agents/task-tracker.md`. Run `/setup-skills` if that file doesn't exist. When the work comes from the tracker, fetch the referenced task per those conventions and check its blocking edges; if a blocker is still open, stop and tell the user. When the task points at a parent spec, or a `spec.md` sits beside it in the feature directory, read it before starting so the implementation decisions and agreed seams carry over. Mark the task in-progress where the tracker records status.
+The task tracker conventions live in `docs/agents/task-tracker.md`. Run `/setup-skills` if that file doesn't exist. When the work comes from the tracker, fetch the referenced task per those conventions and check its blocking edges; if a blocker is still open, stop and tell the user. Suggesting an unblocked task instead is fine while no work has started, but never offer to chain the blocked task on afterwards; it gets its own session. When the task points at a parent spec, or a `spec.md` sits beside it in the feature directory, read it before starting so the implementation decisions and agreed seams carry over. Mark the task in-progress where the tracker records status.
 
 Use the project's domain glossary vocabulary and respect any ADRs in the area you're touching (see `docs/agents/domain.md`).
 

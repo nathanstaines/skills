@@ -41,7 +41,7 @@ Anything in the project that documents how code should be written, such as `CODI
 
 On top of whatever the project documents, the Standards axis always carries the **smell baseline** below, a fixed set of Fowler code smells (_Refactoring_, ch. 3) that applies even when a project documents nothing. Two rules bind it:
 
-- **The project overrides.** A documented project standard always wins; where it endorses something the baseline would flag, suppress the smell.
+- **The project overrides.** A documented project standard always wins, and the spec's recorded implementation decisions count the same way; where either endorses something the baseline would flag, suppress the smell.
 - **Always a judgement call.** Each smell is a labelled heuristic ("possible Feature Envy"), never a hard violation, and like any standard here, skip anything tooling already enforces.
 
 Each smell reads _what it is_ → _how to fix_; match it against the diff:
@@ -67,7 +67,8 @@ Send a single message with two `Agent` tool calls. Use the `general-purpose` sub
 
 - The full diff command and change list (or the file list, when there's no version control).
 - The list of standards-source files you found in step 3, **plus the smell baseline from step 3** pasted in full; the sub-agent has no other access to it.
-- The brief: "Report, per file or hunk where relevant: (a) every place the diff violates a documented standard, citing the standard (file plus the rule); and (b) any baseline smell you spot, naming it and quoting the hunk. Distinguish hard violations from judgement calls: documented-standard breaches can be hard, but baseline smells are always judgement calls, and a documented project standard overrides the baseline. Skip anything tooling enforces. Under 400 words."
+- The spec's implementation decisions from step 2, when a spec exists; the sub-agent needs them to apply the override.
+- The brief: "Report, per file or hunk where relevant: (a) every place the diff violates a documented standard, citing the standard (file plus the rule); and (b) any baseline smell you spot, naming it and quoting the hunk. Distinguish hard violations from judgement calls: documented-standard breaches can be hard, but baseline smells are always judgement calls, and a documented project standard or recorded spec decision overrides the baseline. Skip anything tooling enforces. Under 400 words."
 
 **Spec sub-agent prompt**, include:
 

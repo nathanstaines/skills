@@ -9,4 +9,4 @@ Ask questions one at a time, waiting for feedback on each question before contin
 
 If a *fact* can be found by exploring the codebase, look it up rather than asking the user. The *decisions*, though, are the user's - present each one to them and wait for an answer.
 
-When no open decisions remain, write up the agreed plan and ask the user to confirm it. Their confirmation ends the session; do not enact the plan until it is given.
+When no open decisions remain, write up the agreed plan and ask the user to confirm it. Confirming the plan and deciding what happens next are separate: the confirm question offers the onward paths as options - build it now, capture it with `/to-spec`, or revise the plan. Recommend `/to-spec` when the work is bigger than one session and building directly when it's small. Do nothing until an option is picked.
