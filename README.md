@@ -11,8 +11,9 @@ A set of agent skills used for engineering.
 - **[to-tasks](./skills/to-tasks/SKILL.md)**: break a plan, spec or conversation into tracer-bullet tasks with blocking edges, published to the task tracker.
 - **[domain-modelling](./skills/domain-modelling/SKILL.md)**: build and sharpen the project's domain model as you design, maintaining `CONTEXT.md` and offering ADRs sparingly.
 - **[tdd](./skills/tdd/SKILL.md)**: the red → green loop with tests at pre-agreed seams, one vertical slice at a time.
+- **[implement](./skills/implement/SKILL.md)**: work a task or spec end to end, test-first where the project's testing stance allows.
 
-A typical flow: `/grill` a plan, `/to-spec` the conversation, `/to-tasks` the spec, then work the frontier, with `/domain-modelling` keeping the glossary and ADRs sharp throughout.
+A typical flow: `/grill` a plan, `/to-spec` the conversation, `/to-tasks` the spec, then `/implement` the frontier one task at a time, with `/domain-modelling` keeping the glossary and ADRs sharp throughout.
 
 ## Installation
 

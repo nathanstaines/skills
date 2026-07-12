@@ -57,12 +57,9 @@ Iterate until the user approves the breakdown.
 
 ### 5. Publish the tasks to the configured tracker
 
-Publish the approved tasks. **How** depends on the tracker `/setup-skills` configured; the tasks are the same either way, only the shape of the blocking edges changes:
+Publish the approved tasks per the tracker conventions, in dependency order (blockers first) so each task's blocking edges reference tasks that already exist. Use the matching template below, one task per published item.
 
-- **Local files**: write one file per task under `.scratchpad/<feature-slug>/tasks/<NN>-<slug>.md`, numbered from `01` in dependency order (blockers first). Each file's "Blocked by" lists the numbers/titles it depends on. Use the per-task file template below, one task per file, never a single combined file.
-- **GitHub**: publish one issue per task in dependency order (blockers first) so each task's blocking edges can reference real numbers, following the blocking conventions in `docs/agents/task-tracker.md`.
-
-Work the **frontier**: any task whose blockers are all done, one task at a time in a fresh session, clearing context between tasks. For a purely linear chain that means top to bottom.
+Work the **frontier**: any task whose blockers are all done, one task at a time with `/implement` in a fresh session, clearing context between tasks. For a purely linear chain that means top to bottom.
 
 Do NOT close or modify any parent task.
 
