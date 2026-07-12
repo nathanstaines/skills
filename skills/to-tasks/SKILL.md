@@ -4,7 +4,7 @@ description: Break a plan, spec or the current conversation into a set of tracer
 disable-model-invocation: true
 ---
 
-# To Tasks
+# To tasks
 
 Break a plan, spec or conversation into a set of **tasks**: tracer-bullet vertical slices, each declaring the tasks that **block** it.
 

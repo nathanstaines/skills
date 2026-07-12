@@ -1,9 +1,9 @@
-# CONTEXT.md Format
+# CONTEXT.md format
 
 ## Structure
 
 ```md
-# {Context Name}
+# {Context name}
 
 {One or two sentence description of what this context is and why it exists.}
 
@@ -34,7 +34,7 @@ _Avoid_: Client, buyer, account
 Where `CONTEXT.md` files live comes from `docs/agents/domain.md`. In a multi-context project, a `CONTEXT-MAP.md` at the project root lists the contexts, where they live and how they relate to each other:
 
 ```md
-# Context Map
+# Context map
 
 ## Contexts
 

@@ -1,4 +1,4 @@
-# ADR Format
+# ADR format
 
 ADRs live in `docs/adr/` and use sequential numbering: `0001-slug.md`, `0002-slug.md`, etc. In a multi-context project, context-specific decisions live in the context's own `docs/adr/` (see `docs/agents/domain.md`).
 

@@ -3,7 +3,7 @@ name: domain-modelling
 description: Build and sharpen a project's domain model. Use when the user wants to pin down domain terminology or a ubiquitous language, when an architectural decision needs recording or when another skill needs to maintain the domain model.
 ---
 
-# Domain Modelling
+# Domain modelling
 
 Actively build and sharpen the project's domain model as you design. This is the *active* discipline: challenging terms, inventing edge-case scenarios and writing the glossary and decisions down the moment they crystallise. (Merely *reading* `CONTEXT.md` for vocabulary is not this skill; that's a one-line habit any skill can do. This skill is for when you're changing the model, not just consuming it.)
 

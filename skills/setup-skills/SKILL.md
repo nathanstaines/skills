@@ -4,7 +4,7 @@ description: Configure this project for engineering skills. Sets up the task tra
 disable-model-invocation: true
 ---
 
-# Setup Skills
+# Setup skills
 
 Scaffold the per-project configuration the engineering skills assume:
 
