@@ -4,6 +4,8 @@ description: Turn the current conversation into a spec and publish it to the pro
 disable-model-invocation: true
 ---
 
+# To spec
+
 This skill takes the current conversation context and codebase understanding and produces a spec. Do NOT interview the user, just synthesise what you already know. Synthesise only what was discussed or follows directly from it; if a section of the template has no material, write "Not discussed" rather than inventing content.
 
 The task tracker conventions live in `docs/agents/task-tracker.md`. Run `/setup-skills` if that file doesn't exist.
