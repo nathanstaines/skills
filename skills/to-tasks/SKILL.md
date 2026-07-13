@@ -59,7 +59,7 @@ Iterate until the user approves the breakdown.
 
 Publish the approved tasks per the tracker conventions, in dependency order (blockers first) so each task's blocking edges reference tasks that already exist. Use the matching template below, one task per published item.
 
-Work the **frontier**: any task whose blockers are all done, one task at a time with `/implement` in a fresh session, clearing context between tasks. For a purely linear chain that means top to bottom.
+End by telling the user how to work the **frontier**: any task whose blockers are all done, one task at a time with `/implement` in a fresh session, clearing context between tasks. For a purely linear chain that means top to bottom. This skill ends at publishing; don't run `/implement` yourself.
 
 Do NOT close or modify any parent task.
 
