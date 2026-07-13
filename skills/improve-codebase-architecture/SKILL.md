@@ -71,6 +71,6 @@ Side effects happen inline as decisions crystallise; run the `/domain-modelling`
 - **The user rejects a candidate for a load-bearing reason?** That's ADR material precisely when a future review would otherwise re-suggest the same thing; offer one per `/domain-modelling`'s criteria and skip ephemeral reasons ("not worth it right now").
 - **Exploring alternative interfaces for the deepened module?** Use `/codebase-design`'s design-it-twice pattern.
 
-Grilling ends with its usual routing fork (build it now, capture with `/to-spec` or revise); a confirmed deepening flows on through `/to-tasks` and `/implement` like any other feature.
+Grilling ends with its usual routing fork (build it now, capture with `/to-spec` or revise). From there the deepening is an ordinary feature: each onward step (`/to-tasks`, `/implement`) is offered by the skill that precedes it, never run unprompted.
 
 The report file is temporary, so once the routing fork resolves, offer to capture any remaining `Strong` candidates before they're lost: as tasks per the tracker conventions in `docs/agents/task-tracker.md`, or as a note wherever the user prefers. Don't publish them unasked; unpicked candidates are the user's call, not backlog filler.
