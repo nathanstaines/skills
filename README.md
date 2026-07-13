@@ -21,6 +21,7 @@ npx skills@latest add nathanstaines/skills
 - **[grill](./skills/grill/SKILL.md)**: a relentless interview to sharpen a plan or design. Runs a `/grilling` session.
 - **[grill-with-docs](./skills/grill-with-docs/SKILL.md)**: the same interview, capturing glossary terms and ADRs as they resolve.
 - **[grilling](./skills/grilling/SKILL.md)**: the interview itself, one question at a time until no open decisions remain.
+- **[handoff](./skills/handoff/SKILL.md)**: compact the current conversation into a handoff document in the OS temp dir for a fresh session to pick up.
 - **[implement](./skills/implement/SKILL.md)**: work a task or spec end to end, test-first where the project's testing stance allows.
 - **[improve-codebase-architecture](./skills/improve-codebase-architecture/SKILL.md)**: scan the codebase for deepening opportunities, present them as a visual HTML report, then grill through the chosen candidate.
 - **[tdd](./skills/tdd/SKILL.md)**: the red → green loop with tests at pre-agreed seams, one vertical slice at a time.
