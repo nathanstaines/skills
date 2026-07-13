@@ -14,7 +14,7 @@ The task tracker conventions live in `docs/agents/task-tracker.md`. Run `/setup-
 
 1. Explore the project to understand the current state of the codebase, if you haven't already. Use the project's domain glossary vocabulary throughout the spec and respect any ADRs in the area you're touching (see `docs/agents/domain.md`).
 
-2. Sketch out the seams at which you're going to test the feature. Existing seams should be preferred to new ones. Use the highest seam possible. If new seams are needed, propose them at the highest point you can. The fewer seams across the codebase, the better; the ideal number is one.
+2. Sketch out the seams at which you're going to test the feature (`/codebase-design` owns the seam vocabulary). Existing seams should be preferred to new ones. Use the highest seam possible. If new seams are needed, propose them at the highest point you can. The fewer seams across the codebase, the better; the ideal number is one.
 
    Check with the user that these seams match their expectations. This is the only question this skill asks.
 
@@ -72,6 +72,7 @@ A list of testing decisions that were made. Include:
 - A description of what makes a good test (only test external behaviour, not implementation details)
 - Which modules will be tested
 - Prior art for the tests (i.e. similar types of tests in the codebase)
+- When the work replaces a seam (a refactor or deepening): the existing checks the new seam makes redundant. `/implement` deletes them once the replacements pass; replace, don't layer
 
 In a project that doesn't use tests, title this section **Verification** instead and record how the change will be checked by hand: the flows to exercise and what correct looks like.
 
