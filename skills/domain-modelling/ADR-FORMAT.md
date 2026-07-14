@@ -24,7 +24,11 @@ Only include these when they add genuine value. Most ADRs won't need them.
 
 ## Numbering
 
-Scan `docs/adr/` for the highest existing number and increment by one.
+Before writing the file, work out the number from what's already on disk. Don't reuse the `0001` from the examples above; that's a placeholder.
+
+1. List the exact `docs/adr/` the ADR is going into. In a multi-context project that's the context's own `docs/adr/`, not the system-wide one; numbering is per-directory, so each `docs/adr/` has its own `0001`.
+2. Take the highest `NNNN` prefix present and add one. If the directory is empty or doesn't exist yet, start at `0001`.
+3. Zero-pad to four digits, then write `NNNN-slug.md`.
 
 ## When to offer an ADR
 
