@@ -17,6 +17,7 @@ npx skills@latest add nathanstaines/skills
 - **[setup-skills](./skills/setup-skills/SKILL.md)**: configure a project for the engineering skills (task tracker, domain doc layout and testing stance). Run once per project before first use of the others.
 - **[code-review](./skills/code-review/SKILL.md)**: review the changes since a fixed point along two axes, standards (does the code follow the project's conventions?) and spec (does it do what was asked?), reported side by side.
 - **[codebase-design](./skills/codebase-design/SKILL.md)**: the deep-module vocabulary (module, interface, depth, seam, adapter) and the principles for designing with it, imperative or declarative.
+- **[diagnosing-bugs](./skills/diagnosing-bugs/SKILL.md)**: a six-phase diagnosis loop for hard bugs and performance regressions, built around a tight feedback loop rather than an assumed test suite.
 - **[domain-modelling](./skills/domain-modelling/SKILL.md)**: build and sharpen the project's domain model as you design, maintaining `CONTEXT.md` and offering ADRs sparingly.
 - **[grill](./skills/grill/SKILL.md)**: a relentless interview to sharpen a plan or design. Runs a `/grilling` session.
 - **[grill-with-docs](./skills/grill-with-docs/SKILL.md)**: the same interview, capturing glossary terms and ADRs as they resolve.
