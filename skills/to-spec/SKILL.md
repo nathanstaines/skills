@@ -22,7 +22,7 @@ The task tracker conventions live in `docs/agents/task-tracker.md`. Run `/setup-
 
 3. Give the spec a short feature title, write it using the template below, then publish it to the task tracker. The tracker conventions derive the task title or feature slug from the title. The tracker conventions are the only publish target: spec-like files found elsewhere in the project (leftovers from other tooling, old plans or design docs) don't override them.
 
-4. End by offering the onward paths: `/to-tasks` to break the spec into tasks when the work is bigger than one session, or `/implement` straight from the spec when it's small. Do nothing until an option is picked. `/tdd` is not an entry point; `/implement` invokes it at the agreed seams.
+4. End by offering the onward paths: `/to-tasks` to break the spec into tasks when the work is bigger than one session, or `/implement` straight from the spec when it's small. Do nothing until an option is picked. Both are user-run commands you can't invoke: when one is picked, tell the user to run it and stop. Never break the spec into tasks or start implementing yourself. `/tdd` is not an entry point; `/implement` invokes it at the agreed seams.
 
 <spec-template>
 
