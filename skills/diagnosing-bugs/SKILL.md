@@ -15,7 +15,7 @@ When exploring the codebase, build a clear mental model of the relevant modules 
 
 Spend disproportionate effort here. **Be aggressive. Be creative. Refuse to give up.**
 
-Which loop to reach for first follows the project's `### Testing` stance in the Agent skills block. Where the project tests, a failing test at the right seam (`/codebase-design` owns the seam vocabulary) is the natural first loop. Where it's test-free, skip past the test and go straight to a script, harness or replay loop. The stance decides; the order below is only a default.
+Which loop to reach for first follows the project's `### Testing` stance in the Agent skills block (if the stance is missing, re-run `/setup-skills`). Where the project tests, a failing test at the right seam (`/codebase-design` owns the seam vocabulary) is the natural first loop. Where it's test-free, skip past the test and go straight to a script, harness or replay loop. The stance decides; the order below is only a default.
 
 ### Ways to construct one, in roughly this order
 
@@ -48,7 +48,7 @@ The goal is not a clean repro but a **higher reproduction rate**. Loop the trigg
 
 ### When you genuinely cannot build a loop
 
-Stop and say so explicitly. List what you tried. Ask the user for: (a) access to whatever environment reproduces it, (b) a captured artifact (HAR file, log dump, core dump, screen recording with timestamps) or (c) permission to add temporary production instrumentation. Do **not** proceed to hypothesise without a loop.
+Stop and say so explicitly. List what you tried. Ask the user for: (a) access to whatever environment reproduces it, (b) a captured artefact (HAR file, log dump, core dump, screen recording with timestamps) or (c) permission to add temporary production instrumentation. Do **not** proceed to hypothesise without a loop.
 
 ### Completion criterion: a tight loop that goes red
 
@@ -113,7 +113,7 @@ Whether this phase writes a test comes from the project's `### Testing` stance.
 
 **Where the project tests:** write the regression test **before** the fix, but only if a **correct seam** exists. A correct seam is one where the test exercises the **real bug pattern** as it occurs at the call site. If the only available seam is too shallow (a single-caller test when the bug needs multiple callers, a unit test that can't replicate the chain that triggered the bug), a test there gives false confidence.
 
-**Where the project is test-free:** the regression guard is the minimised repro itself, saved as a runnable script or fixture beside the code rather than a suite test. The same correct-seam judgement applies to where you save and assert it.
+**Where the project is test-free:** the regression guard is the minimised repro itself, saved as a runnable script or fixture beside the code rather than a suite test. The same judgement applies: the guard must assert the real bug pattern at the call site, not a shallow proxy.
 
 **If no correct seam exists, that itself is the finding.** Note it. The codebase architecture is preventing the bug from being locked down. Flag this for the next phase.
 
