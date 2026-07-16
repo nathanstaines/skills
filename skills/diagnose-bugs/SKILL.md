@@ -1,5 +1,5 @@
 ---
-name: diagnosing-bugs
+name: diagnose-bugs
 description: Diagnosis loop for hard bugs and performance regressions. Use when the user says "diagnose"/"debug this", or reports something broken, throwing, failing or slow.
 ---
 
@@ -135,4 +135,4 @@ Required before declaring done:
 - [ ] Throwaway prototypes deleted (or moved to a clearly-marked debug location)
 - [ ] The hypothesis that turned out correct is stated in the change description (commit, changeset or PR), so the next debugger learns
 
-**Then ask: what would have prevented this bug?** If the answer involves architectural change (no good seam, tangled callers, hidden coupling), recommend `/improve-codebase-architecture` with the specifics. Make the recommendation **after** the fix is in, not before; you have more information now than when you started.
+**Then ask: what would have prevented this bug?** If the answer involves architectural change (no good seam, tangled callers, hidden coupling), recommend `/architecture-review` with the specifics. Make the recommendation **after** the fix is in, not before; you have more information now than when you started.

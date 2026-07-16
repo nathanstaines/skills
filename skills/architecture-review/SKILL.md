@@ -1,5 +1,5 @@
 ---
-name: improve-codebase-architecture
+name: architecture-review
 description: Scan a codebase, or a named area of it, for deepening opportunities, present them as a visual HTML report, then grill through whichever one the user picks.
 disable-model-invocation: true
 ---
@@ -62,7 +62,7 @@ Do NOT propose interfaces yet. After the file is written, ask which candidate to
 
 ### 3. Grill the chosen candidate
 
-Once the user picks a candidate, run the `/grilling` skill to walk the decision tree with them: constraints, dependencies and their categories (per `/codebase-design`'s DEEPENING.md), the shape of the deepened module, what sits behind the seam, which checks survive.
+Once the user picks a candidate, run the `/grill` skill to walk the decision tree with them: constraints, dependencies and their categories (per `/codebase-design`'s DEEPENING.md), the shape of the deepened module, what sits behind the seam, which checks survive.
 
 Side effects happen inline as decisions crystallise; run the `/domain-modelling` skill to keep the domain model current:
 
