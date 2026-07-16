@@ -1,6 +1,6 @@
 ---
 name: codebase-design
-description: Shared vocabulary for designing deep modules. Use when the user wants to design or improve a module's interface, find deepening opportunities, decide where a seam goes or make code more verifiable or AI-navigable. Also use when another skill needs the deep-module vocabulary.
+description: Shared vocabulary for designing deep modules. Use when the user wants to design a module's interface or place its seam, or to find deepening opportunities. Also use when another skill needs the deep-module vocabulary.
 ---
 
 # Codebase design
@@ -31,7 +31,7 @@ Use these terms exactly; don't substitute "component", "service", "API" or "boun
 
 ## Deep vs shallow
 
-**Deep module** = small interface + lots of implementation:
+**Deep**:
 
 ```
 ┌─────────────────────┐
@@ -43,7 +43,7 @@ Use these terms exactly; don't substitute "component", "service", "API" or "boun
 └─────────────────────┘
 ```
 
-**Shallow module** = large interface + little implementation (avoid):
+**Shallow**:
 
 ```
 ┌─────────────────────────────────┐
@@ -67,6 +67,7 @@ When designing an interface, ask:
 - **The deletion test.** Imagine deleting the module. If complexity vanishes, it was a pass-through. If complexity reappears across N callers, it was earning its keep.
 - **The interface is the verification surface.** Callers and checks cross the same seam, whether the check is a unit test calling a function, a snapshot of compiled output, visual regression over rendered states or a manual verification flow. If verifying means reaching past the interface, the module is probably the wrong shape.
 - **One adapter means a hypothetical seam. Two adapters means a real one.** Don't introduce a seam unless something actually varies across it.
+- **Prefer existing seams, and the highest one available.** Reach for a seam that already exists before cutting a new one, and when a new one is needed, propose it at the highest point you can. The fewer seams across the codebase, the better; the ideal number is one.
 
 ## Designing for verifiability
 
@@ -112,21 +113,11 @@ Good interfaces make verification natural:
    * { box-sizing: border-box; }
    ```
 
-3. **Small surface area.** Fewer entry points mean fewer checks needed. Fewer parameters mean simpler setup.
-
-## Relationships
-
-- A **module** has exactly one **interface** (the surface it presents to callers and checks).
-- **Depth** is a property of a **module**, measured against its **interface**.
-- A **seam** is where a **module**'s **interface** lives.
-- An **adapter** sits at a **seam** and satisfies the **interface**.
-- **Depth** produces **leverage** for callers and **locality** for maintainers.
+3. **Small surface area.** Every entry point is another thing to check; every parameter is more setup per check.
 
 ## Rejected framings
 
 - **Depth as a ratio of implementation lines to interface lines** (Ousterhout): rewards padding the implementation. Use depth-as-leverage instead.
-- **"Interface" as a language's `interface` keyword or a class's public methods**: too narrow; interface here includes every fact a caller must know.
-- **"Boundary"**: overloaded with DDD's bounded context. Say **seam** or **interface**.
 
 ## Going deeper
 

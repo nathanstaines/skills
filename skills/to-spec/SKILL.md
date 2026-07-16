@@ -14,7 +14,7 @@ The task tracker conventions live in `docs/agents/task-tracker.md`. Run `/setup-
 
 1. Explore the project to understand the current state of the codebase, if you haven't already. Use the project's domain glossary vocabulary throughout the spec and respect any ADRs in the area you're touching (see `docs/agents/domain.md`).
 
-2. Sketch out the seams at which you're going to test the feature (`/codebase-design` owns the seam vocabulary). Existing seams should be preferred to new ones. Use the highest seam possible. If new seams are needed, propose them at the highest point you can. The fewer seams across the codebase, the better; the ideal number is one.
+2. Sketch out the seams at which you're going to test the feature. Run the `/codebase-design` skill for the seam vocabulary and the rules for choosing one.
 
    Check with the user that these seams match their expectations. This is the only question this skill asks.
 
