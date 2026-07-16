@@ -1,6 +1,6 @@
 ---
 name: tdd
-description: Test-driven development. Use when the user wants to build features or fix bugs test-first, mentions "red-green-refactor" or wants integration tests.
+description: Test-driven development, the red → green loop. Use when the user wants to build features or fix bugs test-first, or wants integration tests.
 ---
 
 # Test-driven development
@@ -19,7 +19,7 @@ See [tests.md](tests.md) for examples and [mocking.md](mocking.md) for mocking g
 
 ## Seams: where tests go
 
-A **seam** is where a module's interface lives: the place you test at, observing behaviour without reaching inside (`/codebase-design` owns the full vocabulary). Tests live at seams, never against internals. When proposing seams, prefer existing ones to new and the highest seam possible; the fewer seams across the codebase, the better, and the ideal number is one.
+A **seam** is where a module's interface lives: the place you test at, observing behaviour without reaching inside. Tests live at seams, never against internals. Run the `/codebase-design` skill for the seam vocabulary and the rules for choosing one.
 
 **Test only at pre-agreed seams.** Before writing any test, write down the seams under test and confirm them with the user. When a spec from `/to-spec` already records the agreed seams, those count as confirmed; don't re-ask. No test is written at an unconfirmed seam. You can't test everything; agreeing the seams up front is how testing effort lands on the critical paths and complex logic instead of every edge case.
 
