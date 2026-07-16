@@ -15,7 +15,7 @@ npx skills@latest add nathanstaines/skills
 ## Skills
 
 - **[setup-skills](./skills/setup-skills/SKILL.md)**: configure a project for the engineering skills (task tracker, domain doc layout and testing stance). Run once per project before first use of the others.
-- **[architecture-review](./skills/architecture-review/SKILL.md)**: scan the codebase for deepening opportunities, present them as a visual HTML report, then grill through the chosen candidate.
+- **[architecture-review](./skills/architecture-review/SKILL.md)**: scan the codebase for deepening opportunities, present them as a visual HTML report, then triage every candidate and grill through the ones taken forward. Dismissals are recorded so later runs don't re-propose them.
 - **[code-review](./skills/code-review/SKILL.md)**: review the changes since a fixed point along two axes, standards (does the code follow the project's conventions?) and spec (does it do what was asked?), reported side by side.
 - **[codebase-design](./skills/codebase-design/SKILL.md)**: the deep-module vocabulary (module, interface, depth, seam, adapter) and the principles for designing with it, imperative or declarative.
 - **[diagnose-bugs](./skills/diagnose-bugs/SKILL.md)**: a six-phase diagnosis loop for hard bugs and performance regressions, built around a tight feedback loop rather than an assumed test suite.
@@ -36,7 +36,7 @@ npx skills@latest add nathanstaines/skills
 - `/implement` the frontier one task at a time.
 - `/code-review` the changes.
 
-Refactoring work enters the same flow via `/architecture-review`: pick a deepening candidate from its report and continue from the grill step.
+Refactoring work enters the same flow via `/architecture-review`: triage the deepening candidates in its report and each `yes` continues from the grill step.
 
 ## Credits
 

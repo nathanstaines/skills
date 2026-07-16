@@ -39,6 +39,8 @@ Both CDNs need network access. Without it the page degrades to unstyled HTML and
 
 Project name, date and a compact legend: solid box = module, dashed line = seam, red arrow = leakage, thick dark box = deep module. No introduction paragraph; straight into the candidates.
 
+When the ledger suppressed candidates, the header carries the count as a single muted line ("3 previously-dismissed candidates skipped, see `docs/agents/architecture-review-ledger.md`"). It's a footnote in the design, not a section; the point is that suppression is visible, not that it's discussed.
+
 ## Candidate card
 
 The diagrams carry the weight. Prose is sparse, plain and uses the glossary terms (from the `/codebase-design` skill) without ceremony.
