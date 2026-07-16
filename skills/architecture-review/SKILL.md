@@ -1,10 +1,10 @@
 ---
 name: architecture-review
-description: Scan a codebase, or a named area of it, for deepening opportunities, present them as a visual HTML report, then grill through whichever one the user picks.
+description: Scan a codebase, or a named area of it, for deepening opportunities, present them as a visual HTML report, then triage every candidate yes/maybe-later/no and grill through the yes-queue. Records dismissals so later runs don't re-propose them.
 disable-model-invocation: true
 ---
 
-# Improve codebase architecture
+# Architecture review
 
 Surface architectural friction and propose **deepening opportunities**: refactors that turn shallow modules into deep ones. The aim is verifiability and AI-navigability: fewer, deeper modules mean fewer files an agent must read before it can act safely. Any codebase with interfaces qualifies, imperative or declarative; the friction signals differ, the vocabulary doesn't.
 
@@ -12,12 +12,13 @@ This command is informed by the project's domain model and built on a shared des
 
 - Run the `/codebase-design` skill for the architecture vocabulary (**module**, **interface**, **depth**, **seam**, **adapter**, **leverage**, **locality**) and its principles (the deletion test, "the interface is the verification surface", "one adapter = hypothetical seam, two = real"). Use these terms exactly in every suggestion; don't drift into "component", "service", "API" or "boundary".
 - The domain doc conventions live in `docs/agents/domain.md`: the glossary gives names to good seams, and ADRs record decisions this command doesn't re-litigate.
+- The review ledger at `docs/agents/architecture-review-ledger.md` records what past runs proposed and the user turned down. Reading it first is what stops this command re-suggesting the same deepenings run after run; see [LEDGER.md](./LEDGER-FORMAT.md).
 
 ## Process
 
 ### 1. Explore
 
-Read the project's domain docs first, per `docs/agents/domain.md`.
+Read the project's domain docs first, per `docs/agents/domain.md`, then the review ledger at `docs/agents/architecture-review-ledger.md` if it exists. The ledger holds candidates the user has already dismissed or parked, each with a fingerprint; keep them to hand, they decide what survives exploration.
 
 When the user names a scope, confine the scan to it; otherwise walk the whole project. A scope can be spatial (a path, a feature) or by substance (only the `.scss`, only the token layer). Reading outside the scope to understand callers is fine; proposing candidates outside it isn't. On a large codebase an unscoped scan dilutes the report, so suggest a scope before starting rather than pressing on with a noisy one.
 
@@ -34,6 +35,8 @@ Then use the Agent tool with `subagent_type=Explore` to walk the scoped codebase
 Apply the **deletion test** to anything you suspect is shallow: would deleting it concentrate complexity, or just move it? A "yes, concentrates" is the signal you want.
 
 If sub-agents aren't available in the environment, explore directly.
+
+Then drop every candidate the ledger has already settled, per the matching rules in [LEDGER.md](./LEDGER-FORMAT.md). Suppression is never silent: carry a count of what you dropped into the report.
 
 ### 2. Present candidates as an HTML report
 
@@ -58,19 +61,27 @@ End the report with a **top recommendation** section: which candidate to tackle 
 
 See [HTML-REPORT.md](./HTML-REPORT.md) for the full HTML scaffold, diagram patterns and styling guidance.
 
-Do NOT propose interfaces yet. After the file is written, ask which candidate to explore: one AskUserQuestion, the top recommendation first.
+Do NOT propose interfaces yet, and keep triage out of the report: it presents, the next step decides.
 
-### 3. Grill the chosen candidate
+### 3. Triage every candidate
 
-Once the user picks a candidate, run the `/grill` skill to walk the decision tree with them: constraints, dependencies and their categories (per `/codebase-design`'s DEEPENING.md), the shape of the deepened module, what sits behind the seam, which checks survive.
+Take a disposition on all of them, not just the one that gets built; anything left untriaged is what comes back next run. Ask with AskUserQuestion, one question per candidate, options `Yes`, `Maybe-later` and `No`, top recommendation first. Questions cap at four per call, so batch beyond that.
+
+Then write the ledger before acting on any of it, per [LEDGER.md](./LEDGER-FORMAT.md). Every `no` and `maybe-later` gets an entry, with the reason in the user's own words; a `yes` gets nothing, as building it changes the code out from under any fingerprint. Write the entries while the decisions are fresh, not at the end of a session that may not get there. This is where the ephemeral `no` lands: "not worth it right now" is too thin for an ADR and too real to lose.
+
+### 4. Work the partitions
+
+**Yes**: grill them one at a time, top recommendation first, finishing one before starting the next. Run the `/grill` skill to walk the decision tree: constraints, dependencies and their categories (per `/codebase-design`'s DEEPENING.md), the shape of the deepened module, what sits behind the seam, which checks survive.
 
 Side effects happen inline as decisions crystallise; run the `/domain-modelling` skill to keep the domain model current:
 
 - **Naming a deepened module after a concept the glossary lacks?** Add the term.
 - **Sharpening a fuzzy term during the conversation?** Update the glossary right there.
-- **The user rejects a candidate for a load-bearing reason?** That's ADR material precisely when a future review would otherwise re-suggest the same thing; offer one per `/domain-modelling`'s criteria and skip ephemeral reasons ("not worth it right now").
+- **The user rejects a candidate mid-grill for a load-bearing reason?** That's ADR material; offer one per `/domain-modelling`'s criteria. An ephemeral reason ("not worth it right now") isn't ADR material, but it is a `no`, so it goes to the ledger instead.
 - **Exploring alternative interfaces for the deepened module?** Use `/codebase-design`'s design-it-twice pattern.
 
-Grilling ends with its usual routing fork (build it now, capture with `/to-spec` or revise). From there the deepening is an ordinary feature: each onward step (`/to-tasks`, `/implement`) is offered by the skill that precedes it, never run unprompted.
+Grilling ends with its usual routing fork (build it now, capture with `/to-spec` or revise). From there the deepening is an ordinary feature: each onward step (`/to-tasks`, `/implement`) is offered by the skill that precedes it, never run unprompted. When a grill instead talks the user out of the candidate, it has become a `no` or a `maybe-later`; offer a ledger entry for it.
 
-The report file is temporary, so once the routing fork resolves, offer to capture any remaining `Strong` candidates before they're lost: as tasks per the tracker conventions in `docs/agents/task-tracker.md`, or as a note wherever the user prefers. Don't publish them unasked; unpicked candidates are the user's call, not backlog filler.
+**Maybe-later**: offer to capture each as a task per the tracker conventions in `docs/agents/task-tracker.md`, and link the task from its ledger entry. Don't publish them unasked, a parked candidate is the user's call rather than backlog filler.
+
+**No**: discard. When the reason is load-bearing rather than ephemeral, offer an ADR per `/domain-modelling`'s criteria and link it from the ledger entry.
