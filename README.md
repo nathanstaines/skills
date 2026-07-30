@@ -24,12 +24,14 @@ npx skills@latest add nathanstaines/skills
 - **[grill-with-docs](./skills/grill-with-docs/SKILL.md)**: the same interview, capturing glossary terms and ADRs as they resolve.
 - **[handoff](./skills/handoff/SKILL.md)**: compact the current conversation into a handoff document in the OS temp dir for a fresh session to pick up.
 - **[implement](./skills/implement/SKILL.md)**: work a task or spec end to end, test-first where the project's testing stance allows.
+- **[progress](./skills/progress/SKILL.md)**: show the state of every feature in the task tracker at a glance, including the frontier of startable tasks and the specs still waiting on a path.
 - **[tdd](./skills/tdd/SKILL.md)**: the red → green loop with tests at pre-agreed seams, one vertical slice at a time.
 - **[to-spec](./skills/to-spec/SKILL.md)**: turn the current conversation into a spec and publish it to the project's task tracker.
 - **[to-tasks](./skills/to-tasks/SKILL.md)**: break a plan, spec or conversation into tracer-bullet tasks with blocking edges, published to the task tracker.
 
 ## A typical flow
 
+- `/progress` to see where things stand and what's startable.
 - `/grill` or `/grill-with-docs` a plan.
 - `/to-spec` the conversation.
 - `/to-tasks` the spec.
