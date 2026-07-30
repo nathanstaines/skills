@@ -20,11 +20,20 @@ The task tracker conventions live in `docs/agents/task-tracker.md`. Run `/setup-
 
    Whether the project uses tests comes from the `### Testing` stance in the Agent skills block (if the stance is missing, re-run `/setup-skills`). When the project doesn't use tests, skip this step; the spec's Verification section covers checking the change instead.
 
-3. Give the spec a short feature title, write it using the template below, then publish it to the task tracker. The tracker conventions derive the task title or feature slug from the title. The tracker conventions are the only publish target: spec-like files found elsewhere in the project (leftovers from other tooling, old plans or design docs) don't override them.
+3. Give the spec a short feature title, write it using the template below, then publish it to the task tracker in its initial `draft` state as the tracker conventions record it (the local tracker uses the status frontmatter shown below, `status: draft` and `updated` today; GitHub uses an open issue with no status label). The tracker conventions derive the task title or feature slug from the title. The tracker conventions are the only publish target: spec-like files found elsewhere in the project (leftovers from other tooling, old plans or design docs) don't override them.
 
-4. End by offering the onward paths: `/to-tasks` to break the spec into tasks when the work is bigger than one session, or `/implement` straight from the spec when it's small. Do nothing until an option is picked. Both are user-run commands you can't invoke: when one is picked, tell the user to run it and stop. Never break the spec into tasks or start implementing yourself. `/tdd` is not an entry point; `/implement` invokes it at the agreed seams.
+4. End by offering the onward paths: `/to-tasks` to break the spec into tasks when the work is bigger than one session, or `/implement` straight from the spec when it's small. Do nothing until an option is picked. Both are user-run commands you can't invoke: when one is picked, record the spec's state as `ready` per the tracker conventions, tell the user to run it and stop. Never break the spec into tasks or start implementing yourself. `/tdd` is not an entry point; `/implement` invokes it at the agreed seams.
+
+A spec left at `draft` is one nobody chose a path for. That's a real state worth leaving visible rather than tidying away and `/progress` reports it.
 
 <spec-template>
+
+The frontmatter block below is the local tracker's representation. On GitHub the spec is an issue and its state is carried per that tracker's Status section, not in the body; omit the block there.
+
+---
+status: draft
+updated: <today, YYYY-MM-DD>
+---
 
 ## Problem statement
 
