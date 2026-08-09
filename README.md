@@ -28,6 +28,7 @@ npx skills@latest add nathanstaines/skills
 - **[tdd](./skills/tdd/SKILL.md)**: the red → green loop with tests at pre-agreed seams, one vertical slice at a time.
 - **[to-spec](./skills/to-spec/SKILL.md)**: turn the current conversation into a spec and publish it to the project's task tracker.
 - **[to-tasks](./skills/to-tasks/SKILL.md)**: break a plan, spec or conversation into tracer-bullet tasks with blocking edges, published to the task tracker.
+- **[wait-what](./skills/wait-what/SKILL.md)**: re-pitch the last message from scratch, in Simplified Technical English and the project's glossary terms.
 
 ## A typical flow
 
