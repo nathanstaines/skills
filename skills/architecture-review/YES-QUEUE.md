@@ -25,7 +25,7 @@ Run the `/grill` skill for each one. The decision tree to walk:
 - The shape of the deepened module: its interface, and what sits behind the seam.
 - Which checks survive the change, and which have to be rewritten.
 
-Grilling ends with its usual routing fork: build it now, capture with `/to-spec`, or revise. Do nothing until the user picks one. From there the deepening is an ordinary feature, and each onward step (`/to-tasks`, `/implement`) is offered by the skill that precedes it, never run unprompted.
+Grilling ends with its usual routing fork: build it now, capture with `/to-spec` or revise. Do nothing until the user picks one. From there the deepening is an ordinary feature, and each onward step (`/to-tasks`, `/implement`) is offered by the skill that precedes it, never run unprompted.
 
 ## Side effects
 
