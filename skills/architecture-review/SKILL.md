@@ -67,7 +67,7 @@ Do NOT propose interfaces yet, and keep triage out of the report: it presents, t
 
 ### 3. Triage every candidate
 
-Take a disposition on all of them, not just the one that gets built; anything left untriaged is what comes back next run. Write one question per candidate in `/grill`'s format, top recommendation first, with `Yes`, `Maybe-later` and `No` as the options and your recommended disposition against each. Ask every candidate in a single round and wait for the dispositions.
+Take a disposition on all of them, not just the one that gets built; anything left untriaged is what comes back next run. Write one numbered question per candidate, top recommendation first, offering `Yes`, `Maybe-later` and `No` in the body with your recommended disposition against each. Ask every candidate in a single round and wait for the dispositions.
 
 Then write the ledger before acting on any of it, per [LEDGER-FORMAT.md](./LEDGER-FORMAT.md). Every `no` and `maybe-later` gets an entry, with the reason in the user's own words; a `yes` gets nothing, as building it changes the code out from under any fingerprint. Write the entries while the decisions are fresh, not at the end of a session that may not get there. This is where the ephemeral `no` lands: "not worth it right now" is too thin for an ADR and too real to lose.
 
