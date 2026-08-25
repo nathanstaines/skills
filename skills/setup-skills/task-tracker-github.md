@@ -40,6 +40,8 @@ A feature can hold two status signals, and exactly one of them is ever read:
 - **Tasks referencing the spec exist**: the tasks are the truth. Feature progress is the count of closed over total, and the spec's own labels are ignored, never displayed and never trusted. This is what stops a stale `ready` label sitting above finished tasks.
 - **No tasks**: the spec issue's own state is the truth.
 
+The same rule decides which status *moves* when work runs. With tasks, the task's labels and state are what change and the spec issue is left alone entirely. With none, the spec issue itself moves: the `in-progress` label on start, closed on completion.
+
 Derive the feature's state when you read it. Don't maintain a summary or index issue; an index that has to be kept in step drifts the first time a task closes without one.
 
 ## Blocking edges

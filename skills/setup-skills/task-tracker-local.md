@@ -51,6 +51,8 @@ A feature can hold two status signals, and exactly one of them is ever read:
 - **`tasks/` exists and is non-empty**: the tasks are the source of truth. Feature progress is the count of `done` over total, and the spec's own `status` is ignored, never displayed and never trusted. This is what stops a stale `status: draft` sitting above nine finished tasks.
 - **No `tasks/`**: the spec's frontmatter is the source of truth. Show its status, no count.
 
+The same rule decides which status *moves* when work runs. With tasks, the task's status is the one that changes and the spec's is left alone entirely. With none, the spec's own status is what moves: `in-progress` on start, `done` on close.
+
 Derive the feature's state when you read it. Don't maintain a summary or index file; an index that has to be kept in step drifts the first time a task closes without one.
 
 ## When a skill says "publish to the task tracker"
