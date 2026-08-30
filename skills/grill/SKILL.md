@@ -9,7 +9,7 @@ Work the tree in rounds. The frontier is every decision whose prerequisites are 
 
 Open each round with a `## Round N` header and one or two sentences of what is already settled, so the user reads the questions in context.
 
-Write every question into the chat in this format:
+Format a round like so:
 
 ```
 ❓ **Q1** - **<question title>**: <question body, in a sentence or two>
@@ -17,11 +17,21 @@ Write every question into the chat in this format:
 - **A.** <option>
 - **B.** <option>
 - **C.** <option>
+- **D.** <option>
 
 ➡️ **Recommended: B** - <why this one, in a sentence or two>
+
+---
+
+❓ **Q2** - **<question title>**: <question body, in a sentence or two>
+
+- **A.** <option>
+- **B.** <option>
+
+➡️ **Recommended: A** - <why this one, in a sentence or two>
 ```
 
-Answer a round as `1B, 2C, 3A`, off-menu in prose or `Accept all` to take every recommendation.
+Answer a round as `1B, 2A, 3C`, off-menu in prose or `Accept all` to take every recommendation.
 
 List options when the decision has natural discrete alternatives and keep the question open when it doesn't. Give as many options as the decision actually has, usually two or three. Options are a menu, not a fence: the user may always answer off-menu.
 
