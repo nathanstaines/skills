@@ -1,6 +1,6 @@
 ---
 name: progress
-description: Show the state of every feature in the task tracker at a glance: what's done, what's in flight, what's startable now and which specs are still waiting on a path.
+description: "Show the state of every feature in the task tracker at a glance: what's done, what's in flight, what's startable now and which specs are still waiting on a path."
 disable-model-invocation: true
 ---
 
