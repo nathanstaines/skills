@@ -55,3 +55,21 @@ Create a GitHub issue. Specs are issues too, titled `Spec: <feature title>` so t
 ## When a skill says "fetch the relevant task"
 
 Run `gh issue view <number> --comments`.
+
+## Scouting operations
+
+`/scout` charts a map of decision tasks as issues:
+
+- The map is an issue titled `Scout: <feature title>`, sharing the number space with tasks and specs
+- Decision tasks are issues titled `Decision: <the question>`, distinguishable from implementation tasks by that prefix, tied to the map through GitHub's native sub-issues (`gh api --method POST repos/<owner>/<repo>/issues/<map>/sub_issues -F sub_issue_id=<task-db-id>`, taking the task's numeric database id from `gh api repos/<owner>/<repo>/issues/<n> --jq .id`). Where sub-issues aren't available, fall back to a `Map: #<n>` line at the top of the task body
+- Blocking uses the same native dependencies as implementation tasks, so the frontier renders in GitHub's own UI
+
+State:
+
+- an open map issue is being scouted; closing it means the destination is reached
+- an open decision task with no status label is `open`; the `in-progress` label **is** the claim, set before any work so a second session skips it; a closed one is resolved
+- each carries one type label, `scout:research`, `scout:prototype`, `scout:grill` or `scout:chore`. Create each the first time it's needed
+- one that turned out to sit past the destination is closed with the `out-of-scope` label, which keeps it off the frontier and distinguishes it from one that was resolved
+- the frontier is the open, unlabelled decision tasks whose blockers are all closed: `gh issue list --state open --json number,title,labels`, filtered to the map's sub-issues
+
+The resolution is posted as a comment before the issue is closed, and anything produced while resolving it is linked from that comment rather than pasted into it.

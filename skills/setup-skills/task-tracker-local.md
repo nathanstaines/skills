@@ -62,3 +62,40 @@ Create a new file under `.scratchpad/<feature-slug>/`, deriving the slug from th
 ## When a skill says "fetch the relevant task"
 
 Read the file at the referenced path. The user will normally pass the path, or the feature plus task number (task numbers restart at `01` per feature, so a bare number is only unambiguous within one feature).
+
+## Scouting operations
+
+`/scout` charts a map of decision tasks beside the feature's spec:
+
+- The map is `.scratchpad/<feature-slug>/scout-map.md`
+- Decision tasks are one file per task at `.scratchpad/<feature-slug>/decisions/<NN>-<slug>.md`, numbered from `01`, kept apart from `tasks/` because they resolve questions rather than build anything
+- A map and its decision tasks sit in the same feature directory the spec will later land in, so the route and its outcome stay together
+
+A map:
+
+```yaml
+---
+status: open
+updated: 2026-07-29
+---
+```
+
+`status` is `open` while the way is still being found and `done` once the destination is reached.
+
+A decision task:
+
+```yaml
+---
+status: open
+type: grill
+blocked_by: ["01"]
+updated: 2026-07-29
+---
+```
+
+- `status` is one of `open`, `in-progress`, `blocked`, `done` or `out-of-scope`. `in-progress` **is** the claim: set it before any work, so a second session skips the task. `out-of-scope` closes one that turned out to sit past the destination
+- `type` is one of `research`, `prototype`, `grill` or `chore`
+- `blocked_by` lists the decision task numbers that gate this one, quoted, `[]` when nothing does. One is on the frontier when its status is `open` and every task it names is `done`
+- The resolution appends to the bottom under `## Answer`, and anything produced while resolving it, a prototype or a research write-up, is linked from there rather than pasted in
+
+A map is not a spec and carries no implementation tasks, so the "which status counts" rule doesn't apply to it. Feature progress still comes from `tasks/` when they exist, and a feature that only holds a map is being scouted, not built.

@@ -10,6 +10,8 @@ This skill takes the current conversation context and codebase understanding and
 
 The task tracker conventions live in `docs/agents/task-tracker.md`. Run `/setup-skills` if that file doesn't exist.
 
+When `/scout` charted a map for this work, that map is the second input: read its **Decisions so far** and follow the links into the decision tasks holding the detail, per the tracker's Scouting operations. The map carries ground no conversation holds, so a fresh session that starts empty still has everything it needs. Publish the spec into the same feature the map belongs to, so the route and its outcome sit together.
+
 ## Process
 
 1. Explore the project to understand the current state of the codebase, if you haven't already. Use the project's domain glossary vocabulary throughout the spec and respect any ADRs in the area you're touching (see `docs/agents/domain.md`).
