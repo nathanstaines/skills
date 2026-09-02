@@ -131,7 +131,7 @@ The stack there is illustration; the altitude is the point. The first tracer bul
 
 The argument picks the mode: an argument naming a map works through it, anything else charts a new one. Before charting, look for a map that already covers this idea and work through that rather than starting a second one for the same effort.
 
-Either way, resolve no more than one decision task per session, research excepted.
+Either way, resolve no more than one decision task per session. Research is excepted only when delegated to sub-agents. When sub-agents are unavailable, leave research tasks open rather than resolving them in the current session.
 
 ### Chart the map
 
@@ -141,7 +141,7 @@ The user invokes with a loose idea.
 2. **Map the frontier.** Grill again, **breadth-first** this time: fan out across the whole space rather than deep on any one thread, surfacing the open decisions and the first ones takeable now. **If this surfaces no fog**, the way is already clear and the whole journey fits one session, so the effort doesn't need a map. Stop and ask the user how they'd like to proceed, `/grill` and `/to-spec` being the usual answer.
 3. **Create the map** per the tracker's Scouting operations: Destination and Notes filled in, Decisions so far empty, the fog sketched into **Not yet specified**.
 4. **Create the tasks you can specify now**, then wire the blocking edges in a second pass, since they need identifiers before they can reference each other. Wiring sorts them into the frontier and the blocked, and everything you can't yet specify stays in the fog.
-5. **Fire the research sub-agents** for each research task just created, resolving them in parallel and linking their findings from the task.
+5. **If sub-agents are available, fire them** for each research task just created, resolving them in parallel and linking their findings from the task.
 6. Stop. Charting is one session's work and it hand-resolves nothing.
 
 ### Work through the map
