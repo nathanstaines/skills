@@ -6,6 +6,8 @@ Uses the vocabulary in [SKILL.md](./SKILL.md): **module**, **interface**, **seam
 
 ## Process
 
+Independent sub-agents are a precondition for this pattern. If they are unavailable, tell the user the pattern cannot run in the current environment and stop.
+
 ### 1. Frame the problem space
 
 Before spawning sub-agents, write a user-facing explanation of the problem space for the chosen candidate:
