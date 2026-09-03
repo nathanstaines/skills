@@ -151,7 +151,7 @@ The user invokes with a map. A task is optional: without one, you pick the next 
 1. Load the **map**, the low-resolution view, not every task body.
 2. Choose the task. Use the one the user named, otherwise take the first frontier task in order. **Claim it** before any work.
 3. Resolve it by its type, running whichever skills the **Notes** block names. Zoom in on demand: fetch the full body of a related or resolved task when you need its detail.
-4. Record the resolution against the task, close it and append its one-line gist and link to the map's **Decisions so far**.
+4. Record the resolution against the task, clear its claim status as part of closing it and append its one-line gist and link to the map's **Decisions so far**.
 5. Add newly surfaced tasks, create then wire, then graduate any fog the answer has sharpened, clearing each graduated patch from **Not yet specified** so it lives only as its task. An answer that puts a task past the destination rules it out of scope; an answer that invalidates part of the map updates or deletes those tasks.
 
 ## Reaching the destination

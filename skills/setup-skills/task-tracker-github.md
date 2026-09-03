@@ -9,7 +9,7 @@ Tasks and specs for this project live as GitHub issues. Use the `gh` CLI for all
 - **List tasks**: `gh issue list --state open --json number,title,body,labels,comments` with appropriate `--label` and `--state` filters
 - **Comment on a task**: `gh issue comment <number> --body "..."`
 - **Apply / remove labels**: `gh issue edit <number> --add-label "..."` / `--remove-label "..."`
-- **Close**: `gh issue close <number> --comment "..."`
+- **Close in-progress work**: `gh issue edit <number> --remove-label "in-progress" && gh issue close <number>`; add `--comment "..."` to the close command when needed
 
 Infer the repo from `git remote -v`. `gh` does this automatically when run inside a clone.
 
@@ -31,7 +31,7 @@ A spec (an issue titled `Spec: <feature title>`):
 - the `parked` label means parked
 - a closed issue is `done`
 
-Create a label the first time it's needed: `gh label create in-progress`, and likewise `blocked`, `ready`, `parked`. Move a spec from draft to ready with `gh issue edit <n> --add-label ready`.
+Create a label the first time it's needed: `gh label create in-progress`, and likewise `blocked`, `ready`, `parked`. Move a spec from draft to ready with `gh issue edit <n> --add-label ready`. Start an open task with `gh issue edit <n> --add-label "in-progress"`. Start a ready spec with `gh issue edit <n> --remove-label "ready" --add-label "in-progress"`, replacing its previous status.
 
 ### Which status counts
 
@@ -40,7 +40,7 @@ A feature can hold two status signals, and exactly one of them is ever read:
 - **Tasks referencing the spec exist**: the tasks are the truth. Feature progress is the count of closed over total, and the spec's own labels are ignored, never displayed and never trusted. This is what stops a stale `ready` label sitting above finished tasks.
 - **No tasks**: the spec issue's own state is the truth.
 
-The same rule decides which status *moves* when work runs. With tasks, the task's labels and state are what change and the spec issue is left alone entirely. With none, the spec issue itself moves: the `in-progress` label on start, closed on completion.
+The same rule decides which status *moves* when work runs. With tasks, the task's labels and state are what change and the spec issue is left alone entirely. With none, the spec issue itself moves.
 
 Derive the feature's state when you read it. Don't maintain a summary or index issue; an index that has to be kept in step drifts the first time a task closes without one.
 
@@ -72,4 +72,4 @@ State:
 - one that turned out to sit past the destination is closed with the `out-of-scope` label, which keeps it off the frontier and distinguishes it from one that was resolved
 - the frontier is the open, unlabelled decision tasks whose blockers are all closed: `gh issue list --state open --json number,title,labels`, filtered to the map's sub-issues
 
-The resolution is posted as a comment before the issue is closed, and anything produced while resolving it is linked from that comment rather than pasted into it.
+To finish any decision task, post its resolution as a comment, then use the **Close in-progress work** convention. Anything produced while resolving it is linked from the comment rather than pasted into it.
