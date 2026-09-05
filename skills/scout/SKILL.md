@@ -1,7 +1,7 @@
 ---
 name: scout
 description: Chart a large, foggy piece of work as a map of decision tasks on the project's task tracker, then resolve them one at a time until the way to a spec is clear.
-argument-hint: "A loose idea, or the map to work through"
+argument-hint: "A loose idea, a map or a decision task to work through"
 disable-model-invocation: true
 ---
 
@@ -74,7 +74,7 @@ The answer isn't part of the body. It's recorded on resolution. Anything created
 Every decision task is either **HITL** (human in the loop, worked with a user who speaks for themselves) or **AFK**, driven by the agent alone. A HITL task only resolves through that live exchange, and the agent never stands in for the user's side of it: a grill task that answers its own questions has broken this.
 
 - **Grill** (HITL): conversation, and the default case. Run `/grill` for the rounds and `/domain-modelling` alongside it. The task's resolution ends the session, so ignore `/grill`'s own closing fork to `/to-spec`: that route belongs to the map's destination, not to one task.
-- **Research** (AFK): reading documentation, third-party APIs or other material outside the project to surface a fact a decision waits on. Dispatch a sub-agent, and keep its findings separate from any recommendation drawn from them. Stop as soon as the decision that prompted the research is resolvable rather than browsing on.
+- **Research** (AFK): reading documentation, third-party APIs or other material outside the project to surface a fact a decision waits on. Dispatch a sub-agent when available; otherwise research directly in a dedicated work-through session. Keep sourced findings separate from any recommendation drawn from them. Stop as soon as the decision that prompted the research is resolvable rather than browsing on.
 - **Prototype** (HITL): raise the fidelity of the discussion by making something cheap, rough and concrete to react to, a stub, a sketch, a throwaway slice of UI or logic. Name what it must prove or disprove before writing a line of it. Prototype code stays exploratory and is linked as an asset, promoted into the build only when the user says so.
 - **Chore** (HITL or AFK): manual work that must happen before a decision can be made. Nothing to decide, prototype or research, but the discussion is blocked until it's done: signing up for a service so its API can be judged, provisioning access, moving data so its shape can be seen. It earns its place by unblocking a decision, not by delivering the destination. Drive it alone where you can, otherwise hand the user a precise checklist. The answer records what was done and any facts later tasks depend on, like where credentials live or how many rows there were.
 
@@ -129,9 +129,9 @@ The stack there is illustration; the altitude is the point. The first tracer bul
 
 ## Invocation
 
-The argument picks the mode: an argument naming a map works through it, anything else charts a new one. Before charting, look for a map that already covers this idea and work through that rather than starting a second one for the same effort.
+The argument picks the mode: a map reference works through that map; a decision-task reference works through that task on its parent map; a loose idea charts a new map. For a decision-task reference, read the task and identify its parent map using the tracker's Scouting operations. If the parent map is unclear, ask the user for it before proceeding. Before charting, look for a map that already covers this idea and work through that rather than starting a second one for the same effort.
 
-Either way, resolve no more than one decision task per session. Research is excepted only when delegated to sub-agents. When sub-agents are unavailable, leave research tasks open rather than resolving them in the current session.
+Either way, resolve no more than one decision task per session. Research is excepted only when delegated to sub-agents.
 
 ### Chart the map
 
@@ -141,15 +141,15 @@ The user invokes with a loose idea.
 2. **Map the frontier.** Grill again, **breadth-first** this time: fan out across the whole space rather than deep on any one thread, surfacing the open decisions and the first ones takeable now. **If this surfaces no fog**, the way is already clear and the whole journey fits one session, so the effort doesn't need a map. Stop and ask the user how they'd like to proceed, `/grill` and `/to-spec` being the usual answer.
 3. **Create the map** per the tracker's Scouting operations: Destination and Notes filled in, Decisions so far empty, the fog sketched into **Not yet specified**.
 4. **Create the tasks you can specify now**, then wire the blocking edges in a second pass, since they need identifiers before they can reference each other. Wiring sorts them into the frontier and the blocked, and everything you can't yet specify stays in the fog.
-5. **If sub-agents are available, fire them** for each research task just created, resolving them in parallel and linking their findings from the task.
+5. **If sub-agents are available, fire them** for each research task just created, resolving them in parallel and linking their findings from the task. Otherwise leave research tasks open for dedicated work-through sessions.
 6. Stop. Charting is one session's work and it hand-resolves nothing.
 
 ### Work through the map
 
-The user invokes with a map. A task is optional: without one, you pick the next decision, not the user.
+The user invokes with a map or a decision task. Without a named task, you pick the next decision, not the user.
 
 1. Load the **map**, the low-resolution view, not every task body.
-2. Choose the task. Use the one the user named, otherwise take the first frontier task in order. **Claim it** before any work.
+2. Choose the task. Use the one the user named, otherwise take the first frontier task in order. Confirm it is open, unblocked and unclaimed before claiming it. If a named task is not eligible, explain why and stop. **Claim it** before any work.
 3. Resolve it by its type, running whichever skills the **Notes** block names. Zoom in on demand: fetch the full body of a related or resolved task when you need its detail.
 4. Record the resolution against the task, clear its claim status as part of closing it and append its one-line gist and link to the map's **Decisions so far**.
 5. Add newly surfaced tasks, create then wire, then graduate any fog the answer has sharpened, clearing each graduated patch from **Not yet specified** so it lives only as its task. An answer that puts a task past the destination rules it out of scope; an answer that invalidates part of the map updates or deletes those tasks.
