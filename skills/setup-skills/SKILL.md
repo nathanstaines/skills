@@ -9,7 +9,7 @@ disable-model-invocation: true
 Scaffold the per-project configuration the engineering skills assume:
 
 - **Task tracker**: where tasks live (GitHub or local markdown)
-- **Domain docs**: where `CONTEXT.md` and ADRs live and the rules for reading them
+- **Domain docs**: where `GLOSSARY.md` and ADRs live and the rules for reading them
 - **Testing stance**: where tests live, or whether skills should write them at all (asked only when the project has none)
 
 This is a prompt-driven skill, not a deterministic script. Explore, present what you find, confirm with the user, then write.
@@ -22,7 +22,7 @@ Look at the current project to understand its starting state. Read whatever exis
 
 - Version control: is there a `.git` directory? If so, does `git remote -v` point at GitHub? Which repo? The project may not use git at all (e.g. TFVC); that's fine and nothing else here depends on it.
 - `CLAUDE.md` and `AGENTS.md` at the project root: does either exist? Is there already an `## Agent skills` section in either?
-- `CONTEXT.md` and `CONTEXT-MAP.md` at the project root
+- `GLOSSARY.md` and `GLOSSARY-MAP.md` at the project root
 - `docs/adr/` and any `src/*/docs/adr/` directories
 - `docs/agents/`: does this skill's prior output already exist?
 - `.scratchpad/`: sign that a local markdown task tracker is already in use
@@ -38,9 +38,9 @@ Summarise what's present and what's missing. Then complete the sections in order
 - **GitHub**: tasks live in the repo's GitHub Issues (uses the `gh` CLI)
 - **Local markdown**: tasks live as files under `.scratchpad/<feature-slug>/` in this project (good for solo projects, non-git projects or projects without a remote). If the project uses git, ask whether `.scratchpad/` should be committed (recommended, it's the tracker of record) or gitignored, then add or remove the `.gitignore` entry to match and record the choice in the template's committed flag.
 
-**Section B: domain docs.** Default to single-context, one `CONTEXT.md` plus `docs/adr/` at the project root. This fits almost every project; write it without asking.
+**Section B: domain docs.** Default to single-context, one `GLOSSARY.md` plus `docs/adr/` at the project root. This fits almost every project; write it without asking.
 
-Offer multi-context, a root `CONTEXT-MAP.md` pointing to per-context `CONTEXT.md` files, only when exploration finds multi-context signals. Then confirm which layout they want.
+Offer multi-context, a root `GLOSSARY-MAP.md` pointing to per-context `GLOSSARY.md` files, only when exploration finds multi-context signals. Then confirm which layout they want.
 
 **Section C: testing stance.** Always recorded as a `### Testing` line in the `## Agent skills` block; no separate docs file. When exploration finds test signals, write the line from what you found (where tests live, which runner) without asking. When it finds none, ask whether skills should write tests in this project; absence is ambiguous (deliberately test-free vs not yet started) and the recorded answer disambiguates it for every future skill.
 

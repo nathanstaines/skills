@@ -1,4 +1,4 @@
-# CONTEXT.md format
+# GLOSSARY.md format
 
 ## Structure
 
@@ -31,16 +31,16 @@ _Avoid_: Client, buyer, account
 
 ## Multi-context projects
 
-Where `CONTEXT.md` files live comes from `docs/agents/domain.md`. In a multi-context project, a `CONTEXT-MAP.md` at the project root lists the contexts, where they live and how they relate to each other:
+Where `GLOSSARY.md` files live comes from `docs/agents/domain.md`. In a multi-context project, a `GLOSSARY-MAP.md` at the project root lists the contexts, where they live and how they relate to each other:
 
 ```md
-# Context map
+# Glossary map
 
 ## Contexts
 
-- [Ordering](./src/ordering/CONTEXT.md): receives and tracks customer orders
-- [Billing](./src/billing/CONTEXT.md): generates invoices and processes payments
-- [Shipping](./src/shipping/CONTEXT.md): manages warehouse picking and dispatch
+- [Ordering](./src/ordering/GLOSSARY.md): receives and tracks customer orders
+- [Billing](./src/billing/GLOSSARY.md): generates invoices and processes payments
+- [Shipping](./src/shipping/GLOSSARY.md): manages warehouse picking and dispatch
 
 ## Relationships
 
