@@ -26,6 +26,7 @@ npx skills@latest add nathanstaines/skills
 - **[implement](./skills/implement/SKILL.md)**: work a task or spec end to end, test-first where the project's testing stance allows.
 - **[progress](./skills/progress/SKILL.md)**: show the state of every feature in the task tracker at a glance, including the frontier of startable tasks, the maps still being scouted and the specs still waiting on a path.
 - **[prototype](./skills/prototype/SKILL.md)**: answer a design question with a throwaway logic demo or UI comparison, then capture a human verdict. Works standalone or within scout, stopping before production implementation.
+- **[retro](./skills/retro/SKILL.md)**: review a coding session for evidence-backed improvements to the agent's environment, then stop at ranked recommendations for approval.
 - **[scout](./skills/scout/SKILL.md)**: chart a piece of work too big for one session as a map of decision tasks in the task tracker, then resolve them one per session until the way to a spec is clear.
 - **[tdd](./skills/tdd/SKILL.md)**: the red → green loop with tests at pre-agreed seams, one vertical slice at a time.
 - **[to-spec](./skills/to-spec/SKILL.md)**: turn the current conversation into a spec and publish it to the project's task tracker.
@@ -42,6 +43,7 @@ npx skills@latest add nathanstaines/skills
 - `/to-tasks` the spec.
 - `/implement` the frontier one task at a time.
 - `/code-review` the changes.
+- `/retro` when a session reveals friction worth addressing for future runs.
 
 Refactoring work enters the same flow via `/architecture-review`: triage the deepening candidates in its report and each `yes` continues from the grill step.
 
