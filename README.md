@@ -25,6 +25,7 @@ npx skills@latest add nathanstaines/skills
 - **[handoff](./skills/handoff/SKILL.md)**: compact the current conversation into a handoff document in the OS temp dir for a fresh session to pick up.
 - **[implement](./skills/implement/SKILL.md)**: work a task or spec end to end, test-first where the project's testing stance allows.
 - **[progress](./skills/progress/SKILL.md)**: show the state of every feature in the task tracker at a glance, including the frontier of startable tasks, the maps still being scouted and the specs still waiting on a path.
+- **[prototype](./skills/prototype/SKILL.md)**: answer a design question with a throwaway logic demo or UI comparison, then capture a human verdict. Works standalone or within scout, stopping before production implementation.
 - **[scout](./skills/scout/SKILL.md)**: chart a piece of work too big for one session as a map of decision tasks in the task tracker, then resolve them one per session until the way to a spec is clear.
 - **[tdd](./skills/tdd/SKILL.md)**: the red → green loop with tests at pre-agreed seams, one vertical slice at a time.
 - **[to-spec](./skills/to-spec/SKILL.md)**: turn the current conversation into a spec and publish it to the project's task tracker.
@@ -35,6 +36,7 @@ npx skills@latest add nathanstaines/skills
 
 - `/progress` to see where things stand and what's startable.
 - `/scout` when the work is too big or too foggy for one session, then work its map one decision at a time.
+- `/prototype` when a design question needs something concrete to judge, standalone or as part of scouting.
 - `/grill` or `/grill-with-docs` a plan.
 - `/to-spec` the conversation.
 - `/to-tasks` the spec.
