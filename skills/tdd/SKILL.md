@@ -29,6 +29,7 @@ Ask: "What's the public interface, and which seams should we test?"
 
 - **Implementation-coupled**: mocks internal collaborators, tests private methods or verifies through a side channel (querying the database instead of using the interface). The tell: the test breaks when you refactor but behaviour hasn't changed.
 - **Tautological**: the assertion recomputes the expected value the way the code does (`expect(add(a, b)).toBe(a + b)`, a snapshot derived by hand the same way, a constant asserted equal to itself), so it passes by construction and can never disagree with the code. Expected values must come from an independent source of truth: a known-good literal, a worked example, the spec.
+  - **Existence check**: `toBeDefined()`, `toBeTruthy()` or a not-null assertion passes for almost any output, so it can't disagree with the code either; assert the value itself.
 - **Horizontal slicing**: writing all tests first, then all implementation. Bulk tests verify _imagined_ behaviour: you test the _shape_ of things rather than user-facing behaviour, the tests go insensitive to real changes and you commit to test structure before understanding the implementation. Work in **vertical slices** instead: one test → one implementation → repeat, each test a **tracer bullet** that responds to what the last cycle taught you.
 
 ## Rules of the loop
@@ -39,3 +40,17 @@ Ask: "What's the public interface, and which seams should we test?"
 - **One slice at a time.** One seam, one test, one minimal implementation per cycle.
 - **A bug fix starts at red too.** Reproduce the bug as a failing test at an agreed seam, then fix until it goes green; the test stays as a regression guard.
 - **Refactoring is not part of the loop.** It belongs to a separate review pass (`/code-review`) once the loop ends, not the red → green implementation cycle.
+
+## If a failing test is impractical
+
+Some changes have no seam where a test is cheap: it would need broad harness setup, production-only state, slow end-to-end infrastructure, vague reproduction steps or large unrelated fixture churn. Then take the closest executable check that can still go red: a targeted script, a reproduction command, browser automation, a snapshot comparison, a log assertion or a focused integration check. Propose it alongside the seams so the user confirms the fallback too.
+
+A red check beats a bad test. Beyond the anti-patterns above, a test is bad when it depends on timing or unrelated global state, needs expensive infrastructure for a small change or would be deleted as soon as it proved the fix.
+
+## Final response
+
+Report the evidence, not just the outcome:
+
+- **Red**: the test or check that failed before the change, and the failure it produced.
+- **Green**: the passing run, and any nearby validation.
+- **No red**: if failing-before evidence couldn't be shown, why, and which check stood in for it.
