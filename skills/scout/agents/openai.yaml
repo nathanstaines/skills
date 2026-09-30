@@ -1,0 +1,5 @@
+interface:
+  display_name: "Scout"
+  short_description: "Chart a large, foggy piece of work as a map of decision tasks"
+policy:
+  allow_implicit_invocation: false

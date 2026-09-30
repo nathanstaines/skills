@@ -1,0 +1,5 @@
+interface:
+  display_name: "Setup skills"
+  short_description: "Configure this project for engineering skills"
+policy:
+  allow_implicit_invocation: false

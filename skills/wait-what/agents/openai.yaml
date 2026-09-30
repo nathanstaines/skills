@@ -1,0 +1,5 @@
+interface:
+  display_name: "Wait, what?"
+  short_description: "Re-pitch the last message from scratch"
+policy:
+  allow_implicit_invocation: false

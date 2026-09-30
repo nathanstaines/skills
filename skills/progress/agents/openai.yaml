@@ -1,0 +1,5 @@
+interface:
+  display_name: "Progress"
+  short_description: "Show task tracker state and what's startable"
+policy:
+  allow_implicit_invocation: false

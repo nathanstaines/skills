@@ -1,0 +1,5 @@
+interface:
+  display_name: "To tasks"
+  short_description: "Break a spec into tasks"
+policy:
+  allow_implicit_invocation: false
